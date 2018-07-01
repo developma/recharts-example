@@ -155,6 +155,8 @@ export default class Prot extends React.Component {
             section.maxNum = section.maxNum + 1
           } else if (section.maxScore === maxScore) {
             section.maxNum = section.maxNum + 1
+          } else if (section.maxScore < maxScore) {
+            section.maxNum = 1
           }
         }
         return section
@@ -168,6 +170,8 @@ export default class Prot extends React.Component {
             section.latestNum = section.latestNum + 1
           } else if (section.latestScore === latestScore) {
             section.latestNum = section.latestNum + 1
+          } else if (section.latestScore < latestScore) {
+            section.latestNum = 1
           }
         }
         return section
@@ -176,13 +180,13 @@ export default class Prot extends React.Component {
 
     return (
       <BarChart
-        width={600}
+        width={800}
         height={300}
         data={data}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="sectionName" />
+        <XAxis dataKey="sectionName" interval={0} />
         <YAxis />
         <Tooltip />
         <Legend />
